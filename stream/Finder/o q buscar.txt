@@ -1,0 +1,16 @@
+quem moreeu mais, quem tomou vacina e quem nn morreu
+quantos porcento de quem tomou morreu
+quantos por cento que nn tomou
+morte por faixa etária que tomou e nn tomou vacina
+vacina mais eficiente
+https://opendatasus.saude.gov.br/dataset/srag-2021-a-2024
+
+colunas:
+
+vacina 1-sim, 2-não, 9-ignorado BE 57
+
+classi_fin: 5 - covid DC 107
+
+evolucao: 1- cura 2-obito 3 - obito por outras causas 9 - ignorado DF 110
+
+dt-evoluca : data de alta ou óbito (depende do campo 80)  DG

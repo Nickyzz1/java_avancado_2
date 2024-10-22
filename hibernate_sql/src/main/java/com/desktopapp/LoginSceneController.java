@@ -38,6 +38,7 @@ public class LoginSceneController {
     @FXML
     protected CheckBox cbPass;
 
+
     @FXML
     protected void submit(ActionEvent e) throws Exception {
         Context ctx = new Context();
@@ -45,49 +46,45 @@ public class LoginSceneController {
                 "SELECT u FROM User u WHERE u.name = :arg0",
                 tfLogin.getText()
         );
-        if (users.size() == 0) {
+
+        if (users.isEmpty()) {
             Alert alert = new Alert(
-                    AlertType.ERROR,
-                    "Usuário não está cadastrado!",
-                    ButtonType.OK
+                AlertType.ERROR,
+                "Usuário não está cadastrado!",
+                ButtonType.OK
             );
             alert.showAndWait();
             return;
         }
+
         var user = users.get(0);
         if (!pfPass.getText().equals(user.getPassword())) {
             Alert alert = new Alert(
-                    AlertType.ERROR,
-                    "Senha incorreta!",
-                    ButtonType.OK
+                AlertType.ERROR,
+                "Senha incorreta!",
+                ButtonType.OK
             );
             alert.showAndWait();
             return;
         }
-        
-        var crrStage = (Stage) btLogin
-                .getScene().getWindow();
-        crrStage.close();
-        }
 
-        @FXML
-        protected void changeToCreateAccount(ActionEvent e) throws Exception {
-                URL newSceneUrl = getClass().getResource("createAccountScene.fxml");
-                Parent newRoot = FXMLLoader.load(newSceneUrl);
-                
-                // Crie uma nova cena
-                Scene newScene = new Scene(newRoot);
-                
-                // Obtenha o estágio atual e defina a nova cena
-                Stage currentStage = (Stage) btCreateAccount.getScene().getWindow();
-                currentStage.setScene(newScene);
-                currentStage.show();
+        var scene = WelcomeSceneController.CreateScene(user);
+        Stage currentStage = (Stage) btCreateAccount.getScene().getWindow();
+        currentStage.setScene(scene);
+    }
 
-        //         URL sceneUrl = LoginSceneController.class
-        //         .getResource("login-scene.fxml");
-        // Parent root = FXMLLoader.load(sceneUrl);
-        // Scene scene = new Scene(root);
-        }
+    @FXML
+    protected void changeToCreateAccount(ActionEvent e) throws Exception {
+        URL newSceneUrl = getClass().getResource("createAccountScene.fxml");
+        Parent newRoot = FXMLLoader.load(newSceneUrl);
 
-       
+        // Crie uma nova cena
+        Scene newScene = new Scene(newRoot);
+
+        // Obtenha o estágio atual e defina a nova cena
+        Stage currentStage = (Stage) btCreateAccount.getScene().getWindow();
+        currentStage.setScene(newScene);
+        currentStage.show();
+    }
+
 }

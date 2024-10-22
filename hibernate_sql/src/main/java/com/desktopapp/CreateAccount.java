@@ -1,13 +1,18 @@
 package com.desktopapp;
 
-import java.awt.TextField;
 import java.net.URL;
 
 import com.desktopapp.model.User;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class CreateAccount {
 
@@ -16,29 +21,35 @@ public class CreateAccount {
     }
 
     @FXML
-    protected PasswordField userPass;
+    protected PasswordField passUser;
     @FXML
-    protected TextField userName;
+    protected TextField emailUser;
+    @FXML
+    protected Button criandoConta; 
 
-    public CreateAccount(TextField userName, PasswordField userPass){
-        this.userName = userName;
-        this.userPass = userPass;
-    }
+    // public CreateAccount(TextField emailUser, PasswordField passUser){
+    //     this.emailUser = emailUser;
+    //     this.passUser = passUser;
+    // }
 
     @FXML
-    protected void methodCreateAccount()
+    protected void methodCreateAccount(ActionEvent e) throws Exception 
     {
         User user = new User();
-        user.setName(userName.toString());
-        user.setPassword(userPass.toString());
+        user.setName(emailUser.getText());
+        user.setPassword(passUser.getText());
     
         Context ctx = new Context();
         ctx.begin();
         ctx.save(user);
         ctx.commit();
         
-        URL newURL = getClass().getResource("login-scene.fxml");
+        URL newSceneUrl = getClass().getResource("login-scene.fxml");
+        Parent newRoot = FXMLLoader.load(newSceneUrl);
         Scene newScene = new Scene(newRoot);
+        Stage currentStage = (Stage) criandoConta.getScene().getWindow();
+        currentStage.setScene(newScene);
+        currentStage.show();
 
     }
     

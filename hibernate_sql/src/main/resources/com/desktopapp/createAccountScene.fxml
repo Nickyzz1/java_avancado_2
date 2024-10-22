@@ -62,9 +62,9 @@
         </Label>
             <AnchorPane prefHeight="374.0" prefWidth="641.0">
                <children>
-                  <PasswordField id="passUser" layoutX="73.0" layoutY="204.0" prefHeight="25.0" prefWidth="482.0" />
-                  <TextField id="emailUser" layoutX="73.0" layoutY="127.0" prefHeight="25.0" prefWidth="482.0" />
-                  <Button layoutX="288.0" layoutY="271.0" mnemonicParsing="false" text="cadastrar" onAction="#methodCreateAccount" />
+                  <PasswordField id="passUser" fx:id="passUser" layoutX="73.0" layoutY="204.0" prefHeight="25.0" prefWidth="482.0" />
+                  <TextField id="emailUser" fx:id="emailUser" layoutX="73.0" layoutY="127.0" prefHeight="25.0" prefWidth="482.0" />
+                  <Button id="criandoConta" fx:id="criandoConta" layoutX="288.0" layoutY="271.0" mnemonicParsing="false" text="cadastrar" onAction="#methodCreateAccount" />
                   <Label layoutX="73.0" layoutY="103.0" text="Digite seu email" />
                   <Label layoutX="73.0" layoutY="179.0" text="Digite sua senha" />
                </children>

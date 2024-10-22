@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.CreateAccount">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.WelcomeSceneController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -55,18 +52,13 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
-            <AnchorPane prefHeight="374.0" prefWidth="641.0">
+            <AnchorPane layoutY="-14.0" prefHeight="388.0" prefWidth="640.0">
                <children>
-                  <PasswordField id="passUser" fx:id="passUser" layoutX="73.0" layoutY="204.0" prefHeight="25.0" prefWidth="482.0" />
-                  <TextField id="emailUser" fx:id="emailUser" layoutX="73.0" layoutY="127.0" prefHeight="25.0" prefWidth="482.0" />
-                  <Button id="criandoConta" fx:id="criandoConta" layoutX="288.0" layoutY="271.0" mnemonicParsing="false" text="cadastrar" onAction="#methodCreateAccount" />
-                  <Label layoutX="73.0" layoutY="103.0" text="Digite seu email" />
-                  <Label layoutX="73.0" layoutY="179.0" text="Digite sua senha" />
+                  <Label layoutX="176.0" layoutY="153.0" prefHeight="83.0" prefWidth="272.0" text="Bem vindo">
+                     <font>
+                        <Font size="56.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
       </children>

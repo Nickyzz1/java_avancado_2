@@ -27,11 +27,6 @@ public class CreateAccount {
     @FXML
     protected Button criandoConta; 
 
-    // public CreateAccount(TextField emailUser, PasswordField passUser){
-    //     this.emailUser = emailUser;
-    //     this.passUser = passUser;
-    // }
-
     @FXML
     protected void methodCreateAccount(ActionEvent e) throws Exception 
     {

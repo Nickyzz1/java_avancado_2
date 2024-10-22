@@ -68,7 +68,7 @@ public class LoginSceneController {
             return;
         }
 
-        var scene = WelcomeSceneController.CreateScene(user);
+        var scene = ViewProducts.CreateScene(user);
         Stage currentStage = (Stage) btCreateAccount.getScene().getWindow();
         currentStage.setScene(scene);
     }

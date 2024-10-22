@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ViewProducts">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ViewCart">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -55,12 +55,20 @@
       <children>
             <AnchorPane layoutX="6.0" layoutY="-14.0" prefHeight="388.0" prefWidth="640.0">
                <children>
-                  <Label layoutX="226.0" layoutY="106.0" prefHeight="55.0" prefWidth="188.0" text="Bem vindo">
+                  <Label layoutX="226.0" layoutY="106.0" prefHeight="55.0" prefWidth="188.0" text="Seu carrinho aqui">
                      <font>
                         <Font size="38.0" />
                      </font>
                   </Label>
-                  <Label layoutX="172.0" layoutY="167.0" prefHeight="55.0" prefWidth="296.0" text="Adicione produtos ao seu carrinho">
+                  <VBox fx:id="productsVBox" spacing="10" layoutY="150.0" layoutX="20.0">
+                    <TableView fx:id="cartTableView">
+                        <columns>
+                            <!-- As colunas serão adicionadas dinamicamente -->
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+                  <!-- <Label layoutX="172.0" layoutY="167.0" prefHeight="55.0" prefWidth="296.0" text="Adicione produtos ao seu carrinho">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -68,7 +76,7 @@
                   <Button id="inquisicao1" fx:id="inquisicao1" layoutX="42.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar A Inquisição vol1" />
                   <Button id="subsolo" fx:id="subsolo" layoutX="226.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar Memórias do Subsolo " />
                   <Button id="inquisicao2" fx:id="inquisicao2"  layoutX="430.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar A Inquisição vol 2" />
-                  <Button id="myCart" fx:id="myCart" layoutX="16.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeToCart" text="Ver carrinho" />
+                  <Button id="cart" fx:id="cart" layoutX="16.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeToCart" text="Ver carrinho" /> -->
                </children>
             </AnchorPane>
       </children>

@@ -1,5 +1,6 @@
 package com.desktopapp;
 
+import com.desktopapp.model.Cart;
 import com.desktopapp.model.User;
 
 import javafx.application.Application;
@@ -15,6 +16,14 @@ public class App extends Application{
         user.setPassword("ferrari");
 
         Context ctx = new Context();
+        ctx.begin();
+        ctx.save(user);
+        ctx.commit();
+
+        Cart cart = new Cart();
+        cart.setName("ferrari");
+        cart.setValue(10.0);
+
         ctx.begin();
         ctx.save(user);
         ctx.commit();

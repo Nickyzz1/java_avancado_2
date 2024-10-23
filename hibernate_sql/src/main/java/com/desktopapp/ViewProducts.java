@@ -70,10 +70,10 @@ public class ViewProducts {
     @FXML
     protected void changeToCart(ActionEvent e) throws Exception {
         
-        ViewCart view = new ViewCart(cart);
         var scene = ViewCart.CreateScene(loggedUser, cart);
         Stage currentStage = (Stage) myCart.getScene().getWindow();
         currentStage.setScene(scene);
+       // ViewCart view = new ViewCart(cart);
     }
 
     // botao sair 

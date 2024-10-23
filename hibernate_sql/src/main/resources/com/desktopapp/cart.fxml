@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ViewCart">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -53,32 +53,23 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <AnchorPane layoutX="6.0" layoutY="-14.0" prefHeight="388.0" prefWidth="640.0">
-               <children>
-                  <Label layoutX="226.0" layoutY="106.0" prefHeight="55.0" prefWidth="188.0" text="Seu carrinho aqui">
-                     <font>
-                        <Font size="38.0" />
-                     </font>
-                  </Label>
-                  <VBox fx:id="productsVBox" spacing="10" layoutY="150.0" layoutX="20.0">
-                    <TableView fx:id="cartTableView">
-                        <columns>
-                            <!-- As colunas serão adicionadas dinamicamente -->
-                        </columns>
-                    </TableView>
-                </VBox>
-                
-                  <!-- <Label layoutX="172.0" layoutY="167.0" prefHeight="55.0" prefWidth="296.0" text="Adicione produtos ao seu carrinho">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-                  <Button id="inquisicao1" fx:id="inquisicao1" layoutX="42.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar A Inquisição vol1" />
-                  <Button id="subsolo" fx:id="subsolo" layoutX="226.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar Memórias do Subsolo " />
-                  <Button id="inquisicao2" fx:id="inquisicao2"  layoutX="430.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar A Inquisição vol 2" />
-                  <Button id="cart" fx:id="cart" layoutX="16.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeToCart" text="Ver carrinho" /> -->
-               </children>
-            </AnchorPane>
+        <AnchorPane layoutX="14.0" layoutY="-28.0" prefHeight="388.0" prefWidth="640.0">
+          <children>
+            <Label layoutX="165.0" layoutY="95.0" prefHeight="55.0" prefWidth="311.0" text="Seu carrinho aqui">
+              <font>
+                <Font size="38.0" />
+              </font>
+            </Label>
+            <VBox fx:id="productsVBox" layoutX="20.0" layoutY="150.0" spacing="10" />
+            <TableView layoutX="128.0" id="tableView" fx:id="tableView" layoutY="162.0" prefHeight="200.0" prefWidth="364.0">
+              <columns>
+                <TableColumn id="idColumn" fx:id="idColumn" prefWidth="75.0" text="id" />
+                <TableColumn id="nameColumn" fx:id="nameColumn" prefWidth="75.0" text="name" />
+                <TableColumn id="priceColumn" fx:id="priceColumn" prefWidth="75.0" text="price" />
+              </columns>
+            </TableView>
+          </children>
+        </AnchorPane>
       </children>
     </AnchorPane>
   </children>

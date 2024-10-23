@@ -1,6 +1,5 @@
 package com.desktopapp;
 
-import com.desktopapp.model.Cart;
 import com.desktopapp.model.User;
 
 import javafx.application.Application;
@@ -12,21 +11,21 @@ public class App extends Application{
 
         // cria um user
         User user = new User();
-        user.setName("don");
-        user.setPassword("ferrari");
+        user.setName("");
+        user.setPassword("");
 
         Context ctx = new Context();
         ctx.begin();
         ctx.save(user);
         ctx.commit();
 
-        Cart cart = new Cart();
-        cart.setName("ferrari");
-        cart.setValue(10.0);
+        // Cart cart = new Cart();
+        // cart.setName("ferrari");
+        // cart.setValue(10.0);
 
-        ctx.begin();
-        ctx.save(user);
-        ctx.commit();
+        // ctx.begin();
+        // ctx.save();
+        // ctx.commit();
 
         launch(args);
     }

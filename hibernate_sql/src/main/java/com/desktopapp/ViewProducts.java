@@ -1,10 +1,7 @@
 package com.desktopapp;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.desktopapp.model.Cart;
 import com.desktopapp.model.User;
 
 import javafx.event.ActionEvent;
@@ -18,7 +15,7 @@ import javafx.stage.Stage;
 public class ViewProducts {
 
     User loggedUser;
-    List<Cart> cartItems = new ArrayList<>(); 
+    MyCart cart = new MyCart();
 
     public User getLoggedUser() {
         return loggedUser;
@@ -49,33 +46,32 @@ public class ViewProducts {
     
         return new Scene(root);
     }
-    
 
     @FXML
-    protected void addProduct(ActionEvent e) throws Exception {
+    public void addProduct(ActionEvent e) throws Exception {
 
         Button sourceButton = (Button) e.getSource();
         String name = sourceButton.getId();
-        Double value = 10.0; 
+        Double price = 10.0; 
+        Products product = new Products(name, price);
+        cart.addProduct(product);
 
-        Cart cart = new Cart();
-        cart.setName(name);
-        cart.setValue(value);
+        // Cart cart = new Cart();
+        // cart.setNameProd(name);
+        // cart.setValueProd(value);
 
-      
-        cartItems.add(cart);
+        // Context ctx = new Context();
+        // ctx.begin();
+        // ctx.save(cart);
+        // ctx.commit();
 
-      
-        Context ctx = new Context();
-        ctx.begin();
-        ctx.save(cart);
-        ctx.commit();
     }
 
     @FXML
     protected void changeToCart(ActionEvent e) throws Exception {
-       
-        var scene = ViewCart.CreateScene(loggedUser, cartItems);
+        
+        ViewCart view = new ViewCart(cart);
+        var scene = ViewCart.CreateScene(loggedUser, cart);
         Stage currentStage = (Stage) myCart.getScene().getWindow();
         currentStage.setScene(scene);
     }

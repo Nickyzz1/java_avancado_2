@@ -1,0 +1,6 @@
+Solid
+(able --> padram para interface, diposeable, useable)
+
+S : Single, responsability (apenasuma responsabilidade parac cada coisa)
+O : open closed (se está dando certo nn mexe!!)(A usa B, eficiencia: A referencia a uma interface e o B é a classe que usa essa interface, para nn ser exatamente depende de B)
+L : interface segregation (se vc pode separar uma interfaca em duas, separe)

@@ -28,13 +28,16 @@ public class Context {
         }
     }
 
-    public <T> List<T> find(Class<T> entytyClass, String query, Object... values) {
+    public <T> List<T> find(Class<T> entytyClass, String query, Object... values ) {
         EntityManager em = emf.createEntityManager();
         List<T> users = null;
         try {
             var queryObj = em.createQuery(query, entytyClass);
-            for (Integer i = 0; i < values.length; i++) {
-                queryObj = queryObj.setParameter("arg" + i.toString(), values[i]);
+            if(values != null)
+            {
+                for (Integer i = 0; i < values.length; i++) {
+                    queryObj = queryObj.setParameter("arg" + i.toString(), values[i]);
+                }
             }
             users = queryObj.getResultList();
         } finally {

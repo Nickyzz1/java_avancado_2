@@ -7,20 +7,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #648a64;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="WHITE" layoutX="210.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar produto" wrappingWidth="181.8203125">
+      <Text fill="WHITE" layoutX="184.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDITAR PRODUTO" wrappingWidth="231.8203125">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Text>
-      <Button layoutX="425.0" layoutY="94.0" mnemonicParsing="false" style="-fx-background-color: DC143C;" text="Excluir Produto" textFill="WHITE" />
-      <Label layoutX="226.0" layoutY="135.0" text="Novo nome" textFill="WHITE" />
-      <TextField layoutX="226.0" layoutY="159.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 10;" />
-      <Label layoutX="226.0" layoutY="212.0" text="Novo preço" textFill="WHITE" />
-      <TextField layoutX="226.0" layoutY="239.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 10;" />
-      <Button layoutX="234.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: #46685b;" text="Editar" textFill="WHITE" />
-      <Button layoutX="311.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: DC143C;" text="Cancelar" textFill="WHITE" />
+      <Button layoutX="375.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: DC143C;" text="Excluir Produto" textFill="WHITE" />
+      <Label layoutX="268.0" layoutY="118.0" text="Novo nome" textFill="WHITE" />
+      <TextField layoutX="169.0" layoutY="152.0" prefHeight="35.0" prefWidth="262.0" style="-fx-background-radius: 10;" />
+      <Label layoutX="269.0" layoutY="200.0" text="Novo preço" textFill="WHITE" />
+      <TextField layoutX="226.0" layoutY="232.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="169.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: #46685b;" text="Editar" textFill="WHITE" />
+      <Button layoutX="270.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: DC143C;" text="Cancelar" textFill="WHITE" />
    </children>
 </AnchorPane>

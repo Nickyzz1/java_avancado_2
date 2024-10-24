@@ -12,7 +12,7 @@ public class Context {
     private EntityManager em;
 
     public Context() {
-        emf = Persistence.createEntityManagerFactory("my-persistence-unit"); // gera o gerenciador de tabelas
+        emf = Persistence.createEntityManagerFactory("my-persistence-unit"); 
     }
 
     public void begin() {
@@ -50,7 +50,7 @@ public class Context {
         EntityManager em = emf.createEntityManager();
         T user = null;
         try {
-            user = em.find(entityClass, primaryKey); // passa primeiro a classe de que é, tipo User.class, e coloca o id
+            user = em.find(entityClass, primaryKey); 
         } finally {
             em.close();
         }
@@ -63,7 +63,7 @@ public class Context {
             return;
         }
         try {
-            em.persist(object); // salva e manda objeto em banco de dados
+            em.persist(object); 
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();

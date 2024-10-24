@@ -13,14 +13,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class ViewCart implements Initializable
 {
 
     private User loggedUser;
+
+    @FXML
+    protected Button voltarHome;
 
     @FXML 
     private TableView<Cart> tableView; 
@@ -82,5 +87,18 @@ public class ViewCart implements Initializable
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
     }
+
+    @FXML
+    protected void goBackHome()
+    {
+        try {
+            var scene = ViewProducts.CreateScene(getLoggedUser());
+            Stage currentStage = (Stage) voltarHome.getScene().getWindow();
+            currentStage.setScene(scene);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
 }
  

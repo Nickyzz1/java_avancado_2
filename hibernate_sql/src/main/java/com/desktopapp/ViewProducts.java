@@ -1,5 +1,6 @@
 package com.desktopapp;
 
+import java.io.IOException;
 import java.net.URL;
 
 import com.desktopapp.model.Cart;
@@ -37,14 +38,22 @@ public class ViewProducts {
     protected Button myCart;
 
     public static Scene CreateScene(User user) throws Exception {
-        URL sceneUrl = ViewProducts.class.getResource("bemVindo.fxml");
-        FXMLLoader loader = new FXMLLoader(sceneUrl);
-        Parent root = loader.load();
-    
-        ViewProducts controller = loader.getController(); 
-        controller.setLoggedUser(user);
-    
-        return new Scene(root);
+
+        try{
+
+            URL sceneUrl = ViewProducts.class.getResource("bemVindo.fxml");
+            FXMLLoader loader = new FXMLLoader(sceneUrl);
+            Parent root = loader.load();
+        
+            ViewProducts controller = loader.getController(); 
+            controller.setLoggedUser(user);
+        
+            return new Scene(root);
+
+        } catch (IOException e) {
+            System.err.println(e);
+            return null;
+        }
     }
 
     @FXML

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -10,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ViewCart" >
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ViewCart">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -61,13 +63,14 @@
               </font>
             </Label>
             <VBox fx:id="productsVBox" layoutX="20.0" layoutY="150.0" spacing="10" />
-            <TableView layoutX="128.0" id="tableView" fx:id="tableView" layoutY="162.0" prefHeight="200.0" prefWidth="364.0">
+            <TableView id="tableView" fx:id="tableView" layoutX="128.0" layoutY="162.0" prefHeight="200.0" prefWidth="364.0">
               <columns>
                 <TableColumn id="idColumn" fx:id="idColumn" prefWidth="75.0" text="id" />
                 <TableColumn id="nameColumn" fx:id="nameColumn" prefWidth="75.0" text="name" />
                 <TableColumn id="priceColumn" fx:id="priceColumn" prefWidth="75.0" text="price" />
               </columns>
             </TableView>
+                  <Button id="voltarHome" fx:id="voltarHome" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#goBackHome" text="Voltar" />
           </children>
         </AnchorPane>
       </children>

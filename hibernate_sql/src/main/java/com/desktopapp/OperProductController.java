@@ -16,10 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class OperProductController implements Initializable {
 
@@ -32,13 +34,19 @@ public class OperProductController implements Initializable {
     private TableView<Product> tableViewAllProducts; 
 
     @FXML
-    private TableColumn<Product, ?> idColumnProducts; 
+    private TableColumn<Product, Long> idColumnProducts; 
 
     @FXML
-    private TableColumn<Product, ?> nameColumnProducts; 
+    private TableColumn<Product, String> nameColumnProducts; 
 
     @FXML
-    private TableColumn<Product, ?> priceColumnProducts; 
+    private TableColumn<Product, Double> priceColumnProducts; 
+
+    @FXML
+    private TableColumn<Product, Void> editar; 
+
+    @FXML
+    private TableColumn<Product, Void> excluir; 
 
     public static Scene CreateScene(User user) throws Exception {
         URL sceneUrl = OperProductController.class.getResource("adicionarEditarExcluirProdutos.fxml");
@@ -56,8 +64,57 @@ public class OperProductController implements Initializable {
         idColumnProducts.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
         nameColumnProducts.setCellValueFactory(new PropertyValueFactory<>("nameProd"));
         priceColumnProducts.setCellValueFactory(new PropertyValueFactory<>("priceProd"));
-    
-        Context ctx = new Context();
+
+        // Configuração da coluna de editar
+        editar.setCellFactory(new Callback<TableColumn<Product, Void>, TableCell<Product, Void>>() {
+            @Override
+            public TableCell<Product, Void> call(TableColumn<Product, Void> param) {
+                return new TableCell<Product, Void>() {
+                    private final Button btn = new Button("Editar");
+
+                    {
+                        btn.setOnAction(event -> {
+                            Product product = getTableView().getItems().get(getIndex());
+                            editProduct(product);
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setGraphic(empty ? null : btn);
+                    }
+                };
+            }
+        });
+
+        // Configuração da coluna de excluir
+        excluir.setCellFactory(new Callback<TableColumn<Product, Void>, TableCell<Product, Void>>() {
+            @Override
+            public TableCell<Product, Void> call(TableColumn<Product, Void> param) {
+                return new TableCell<Product, Void>() {
+                    private final Button btn = new Button("Excluir");
+
+                    {
+                        btn.setOnAction(event -> {
+                            Product product = getTableView().getItems().get(getIndex());
+                            deleteProduct(product);
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setGraphic(empty ? null : btn);
+                    }
+                };
+            }
+        });
+
+        // Adicionando as colunas de editar e excluir à tabela
+        tableViewAllProducts.getColumns().addAll(editar, excluir);
+
+        // Carregar produtos na tabela
         ObservableList<Product> lista = produtos();
         if (lista != null && !lista.isEmpty()) {
             this.tableViewAllProducts.setItems(lista);
@@ -66,21 +123,6 @@ public class OperProductController implements Initializable {
         }
     }
 
-    // public ObservableList<Product> produtos() {
-    //     Context ctx = new Context();
-    //     int cont = 1;
-    //     ObservableList<Product> Lista2 = FXCollections.observableArrayList();
-    //     while (true) {
-    //         Product produto = ctx.find(Product.class, (Object)cont);
-    //         if (produto == null) {
-    //             break;
-    //         }
-    //         Lista2.add(produto);
-    //         cont ++;
-    //     }
-    //     return Lista2;
-    // }
-
     public ObservableList<Product> produtos() {
         Context ctx = new Context();
         ObservableList<Product> lista = FXCollections.observableArrayList();
@@ -88,7 +130,6 @@ public class OperProductController implements Initializable {
             String jpql = "SELECT p FROM Product p";
             TypedQuery<Product> query = ctx.createQuery(Product.class, jpql);
             List<Product> produtosList = query.getResultList();
-            
             lista.addAll(produtosList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +138,6 @@ public class OperProductController implements Initializable {
         return lista;
     }
 
-    
     public User getLoggedUser() {
         return loggedUser;
     }
@@ -106,10 +146,8 @@ public class OperProductController implements Initializable {
         this.loggedUser = loggedUser;
     }
 
-   
     @FXML
-    protected void goBackHome()
-    {
+    protected void goBackHome() {
         try {
             var scene = ViewProductsController.CreateScene(getLoggedUser());
             Stage currentStage = (Stage) voltar.getScene().getWindow();
@@ -120,17 +158,24 @@ public class OperProductController implements Initializable {
     }
 
     @FXML
-    protected void addProduct()
-    {
-
-    }
-    @FXML
-    protected Product getProductFromCell()
-    {
-        idColumnProducts.getCellValueFactory();
-        return null;
+    protected void addProduct() {
+        // Implementar lógica de adição de produto
     }
 
-    
-    
+    private void editProduct(Product product) {
+        // Lógica para editar o produto
+        System.out.println("Editando produto: " + product.getNameProd());
+        // Aqui você pode abrir um novo formulário para edição
+    }
+
+    private void deleteProduct(Product product) {
+        // Lógica para excluir o produto
+        // Context ctx = new Context();
+        // try {
+        //     ctx.remove(product); // Ajuste conforme necessário
+        //     tableViewAllProducts.getItems().remove(product); // Atualiza a tabela
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+    }
 }

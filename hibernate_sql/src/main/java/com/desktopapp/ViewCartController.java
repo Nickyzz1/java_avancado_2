@@ -19,7 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class ViewCart implements Initializable
+public class ViewCartController implements Initializable
 {
 
     private User loggedUser;
@@ -40,11 +40,11 @@ public class ViewCart implements Initializable
     private TableColumn<Cart, ?> priceColumn; 
 
     public static Scene CreateScene(User user) throws Exception {
-        URL sceneUrl = ViewCart.class.getResource("cart.fxml");
+        URL sceneUrl = ViewCartController.class.getResource("cart.fxml");
         FXMLLoader loader = new FXMLLoader(sceneUrl);
         Parent root = loader.load();
         
-        ViewCart controller = loader.getController(); 
+        ViewCartController controller = loader.getController(); 
         controller.setLoggedUser(user); 
     
         return new Scene(root);
@@ -92,7 +92,7 @@ public class ViewCart implements Initializable
     protected void goBackHome()
     {
         try {
-            var scene = ViewProducts.CreateScene(getLoggedUser());
+            var scene = ViewProductsController.CreateScene(getLoggedUser());
             Stage currentStage = (Stage) voltarHome.getScene().getWindow();
             currentStage.setScene(scene);
         } catch (Exception e) {

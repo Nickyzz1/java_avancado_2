@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class ViewProducts {
+public class ViewProductsController {
 
     User loggedUser;
 
@@ -26,7 +26,7 @@ public class ViewProducts {
         this.loggedUser = loggedUser;
     }
 
-    public ViewProducts() { }
+    public ViewProductsController() { }
 
     @FXML
     protected Button inquisicao;
@@ -43,11 +43,11 @@ public class ViewProducts {
 
         try{
 
-            URL sceneUrl = ViewProducts.class.getResource("bemVindo.fxml");
+            URL sceneUrl = ViewProductsController.class.getResource("bemVindo.fxml");
             FXMLLoader loader = new FXMLLoader(sceneUrl);
             Parent root = loader.load();
         
-            ViewProducts controller = loader.getController(); 
+            ViewProductsController controller = loader.getController(); 
             controller.setLoggedUser(user);
         
             return new Scene(root);
@@ -84,7 +84,7 @@ public class ViewProducts {
     @FXML
     protected void changeToCart(ActionEvent e) throws Exception {
         
-        var scene = ViewCart.CreateScene(loggedUser);
+        var scene = ViewCartController.CreateScene(loggedUser);
         Stage currentStage = (Stage) myCart.getScene().getWindow();
         currentStage.setScene(scene);
       
@@ -93,7 +93,7 @@ public class ViewProducts {
     @FXML
     protected void changeToEdit(ActionEvent e) throws Exception {
         
-        var scene = OperProduct.CreateScene(loggedUser);
+        var scene = OperProductController.CreateScene(loggedUser);
         Stage currentStage = (Stage) seeAll.getScene().getWindow();
         currentStage.setScene(scene);
       

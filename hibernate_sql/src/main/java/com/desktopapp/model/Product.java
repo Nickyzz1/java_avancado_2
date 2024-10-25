@@ -32,13 +32,13 @@ public class Product {
     public void setNameProd(String name) {
         this.nameProd = name;
     }
-    private Double valueProd;
+    private Double priceProd;
 
-    public Double getValueProd() {
-        return valueProd;
+    public Double getPriceProd() {
+        return priceProd;
     }
 
-    public void setValueProd(Double value) {
-        this.valueProd = value;
+    public void setPriceProd(Double value) {
+        this.priceProd = value;
     }
 }

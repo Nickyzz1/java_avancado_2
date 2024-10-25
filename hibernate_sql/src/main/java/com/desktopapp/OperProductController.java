@@ -3,8 +3,8 @@ package com.desktopapp;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.desktopapp.model.User;
 import com.desktopapp.model.Product;
+import com.desktopapp.model.User;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,31 +19,31 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class OperProduct implements Initializable {
+public class OperProductController implements Initializable {
 
     private User loggedUser;
 
     @FXML
-    protected Button voltarHome;
+    protected Button voltar;
 
     @FXML 
-    private TableView<Product> tableView; 
+    private TableView<Product> tableViewAllProducts; 
 
     @FXML
-    private TableColumn<Product, ?> idColumn; 
+    private TableColumn<Product, ?> idColumnProducts; 
 
     @FXML
-    private TableColumn<Product, ?> nameColumn; 
+    private TableColumn<Product, ?> nameColumnProducts; 
 
     @FXML
-    private TableColumn<Product, ?> priceColumn; 
+    private TableColumn<Product, ?> priceColumnProducts; 
 
     public static Scene CreateScene(User user) throws Exception {
-        URL sceneUrl = ViewCart.class.getResource("adicionarEditarExcluirProdutos.fxml");
+        URL sceneUrl = OperProductController.class.getResource("adicionarEditarExcluirProdutos.fxml");
         FXMLLoader loader = new FXMLLoader(sceneUrl);
         Parent root = loader.load();
         
-        ViewCart controller = loader.getController(); 
+        OperProductController controller = loader.getController(); 
         controller.setLoggedUser(user); 
     
         return new Scene(root);
@@ -51,14 +51,14 @@ public class OperProduct implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("priceProduto"));
+        idColumnProducts.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
+        nameColumnProducts.setCellValueFactory(new PropertyValueFactory<>("nameProd"));
+        priceColumnProducts.setCellValueFactory(new PropertyValueFactory<>("priceProd"));
     
         Context ctx = new Context();
         ObservableList<Product> lista = produtos();
         if (lista != null && !lista.isEmpty()) {
-            this.tableView.setItems(lista);
+            this.tableViewAllProducts.setItems(lista);
         } else {
             System.out.println("Seu carrinho está vazio.");
         }
@@ -93,8 +93,8 @@ public class OperProduct implements Initializable {
     protected void goBackHome()
     {
         try {
-            var scene = ViewProducts.CreateScene(getLoggedUser());
-            Stage currentStage = (Stage) voltarHome.getScene().getWindow();
+            var scene = ViewProductsController.CreateScene(getLoggedUser());
+            Stage currentStage = (Stage) voltar.getScene().getWindow();
             currentStage.setScene(scene);
         } catch (Exception e) {
             System.err.println(e);
@@ -109,7 +109,7 @@ public class OperProduct implements Initializable {
     @FXML
     protected Product getProductFromCell()
     {
-        idColumn.getCellValueFactory();
+        idColumnProducts.getCellValueFactory();
         return null;
     }
 

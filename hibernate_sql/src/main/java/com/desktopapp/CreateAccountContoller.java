@@ -14,9 +14,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CreateAccount {
+public class CreateAccountContoller {
 
-    public CreateAccount(){
+    public CreateAccountContoller(){
 
     }
 

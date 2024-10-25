@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 public class Context {
 
@@ -92,4 +93,21 @@ public class Context {
             em = null;
         }
     }
+
+    public <T> TypedQuery<T> createQuery(Class<T> entityClass, String query) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            var queryObj = em.createQuery(query, entityClass);
+            System.out.println("\n\n\n\n\nCriou a query na função");
+            return queryObj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.close();
+            em = null;
+            System.out.println("\n\n\n\n\n\nCaiu no erro da função da query");
+            return null;
+        }
+    }
+
+
 }

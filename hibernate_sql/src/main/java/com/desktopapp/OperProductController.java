@@ -1,11 +1,13 @@
 package com.desktopapp;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.desktopapp.model.Product;
 import com.desktopapp.model.User;
 
+import jakarta.persistence.TypedQuery;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -64,19 +66,35 @@ public class OperProductController implements Initializable {
         }
     }
 
+    // public ObservableList<Product> produtos() {
+    //     Context ctx = new Context();
+    //     int cont = 1;
+    //     ObservableList<Product> Lista2 = FXCollections.observableArrayList();
+    //     while (true) {
+    //         Product produto = ctx.find(Product.class, (Object)cont);
+    //         if (produto == null) {
+    //             break;
+    //         }
+    //         Lista2.add(produto);
+    //         cont ++;
+    //     }
+    //     return Lista2;
+    // }
+
     public ObservableList<Product> produtos() {
         Context ctx = new Context();
-        int cont = 1;
-        ObservableList<Product> Lista2 = FXCollections.observableArrayList();
-        while (true) {
-            Product produto = ctx.find(Product.class, (Object)cont);
-            if (produto == null) {
-                break;
-            }
-            Lista2.add(produto);
-            cont ++;
+        ObservableList<Product> lista = FXCollections.observableArrayList();
+        try {
+            String jpql = "SELECT p FROM Product p";
+            TypedQuery<Product> query = ctx.createQuery(Product.class, jpql);
+            List<Product> produtosList = query.getResultList();
+            
+            lista.addAll(produtosList);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return Lista2;
+        
+        return lista;
     }
 
     

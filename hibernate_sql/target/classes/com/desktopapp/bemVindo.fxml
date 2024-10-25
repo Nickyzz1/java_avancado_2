@@ -69,7 +69,7 @@
                   <Button id="subsolo" fx:id="subsolo" layoutX="226.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar Memórias do Subsolo " />
                   <Button id="inquisicao2" fx:id="inquisicao2" layoutX="430.0" layoutY="301.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar A Inquisição vol 2" />
                   <Button id="myCart" fx:id="myCart" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeToCart" text="Ver carrinho" />
-                  <Button layoutX="458.0" layoutY="33.0" mnemonicParsing="false" text="Ver todos os produtos" />
+                <Button id="seeAll" fx:id="seeAll" layoutX="458.0" layoutY="33.0" mnemonicParsing="false" text="Ver todos os produtos" onAction="#changeToEdit"  />
                </children>
             </AnchorPane>
       </children>

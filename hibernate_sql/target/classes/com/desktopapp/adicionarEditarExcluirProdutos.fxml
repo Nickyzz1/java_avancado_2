@@ -7,21 +7,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ProductsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.OperProduct">
    <children>
-      <TableView layoutX="196.0" layoutY="206.0" prefHeight="235.0" prefWidth="231.0">
+      <TableView layoutX="196.0" layoutY="236.0" prefHeight="235.0" prefWidth="231.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Price" />
+          <TableColumn id="idProduto" fx:id="idProduto" prefWidth="75.0" text="ID" />
+          <TableColumn id="nomeProduto" fx:id="nomeProduto" prefWidth="75.0" text="Name" />
+          <TableColumn id="priceProduto" fx:id="priceProduto" prefWidth="75.0" text="Price" />
         </columns>
       </TableView>
-      <TextField id="nomeProduto" layoutX="148.0" layoutY="86.0" />
+      <TextField id="nomeProduto" fx:id="nomeProduto" layoutX="148.0" layoutY="86.0" />
       <Label layoutX="263.0" layoutY="31.0" text="Adicionar produto" />
       <Label layoutX="148.0" layoutY="62.0" text="Name" />
       <TextField id="priceProduto" layoutX="337.0" layoutY="86.0" />
       <Label layoutX="337.0" layoutY="62.0" text="Price" />
-      <Button id="btAdicionar" layoutX="278.0" layoutY="135.0" mnemonicParsing="false" onAction="#addProduct" text="Adicionar" />
+      <Button id="btAdicionar" layoutX="278.0" layoutY="135.0" mnemonicParsing="false"  text="Adicionar" />
+      <Label layoutX="238.0" layoutY="198.0" text="PRODUTOS CADASTRADOS" />
    </children>
 </AnchorPane>

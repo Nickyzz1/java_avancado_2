@@ -36,6 +36,8 @@ public class ViewProducts {
     protected Button inquisicao2;
     @FXML
     protected Button myCart;
+    @FXML
+    protected Button seeAll;
 
     public static Scene CreateScene(User user) throws Exception {
 
@@ -84,6 +86,15 @@ public class ViewProducts {
         
         var scene = ViewCart.CreateScene(loggedUser);
         Stage currentStage = (Stage) myCart.getScene().getWindow();
+        currentStage.setScene(scene);
+      
+    }
+
+    @FXML
+    protected void changeToEdit(ActionEvent e) throws Exception {
+        
+        var scene = OperProduct.CreateScene(loggedUser);
+        Stage currentStage = (Stage) seeAll.getScene().getWindow();
         currentStage.setScene(scene);
       
     }

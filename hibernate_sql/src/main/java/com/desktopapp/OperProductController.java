@@ -169,13 +169,18 @@ public class OperProductController implements Initializable {
     }
 
     private void deleteProduct(Product product) {
-        // Lógica para excluir o produto
-        // Context ctx = new Context();
-        // try {
-        //     ctx.remove(product); // Ajuste conforme necessário
-        //     tableViewAllProducts.getItems().remove(product); // Atualiza a tabela
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
+        Context ctx = new Context();
+        ctx.begin();
+        try {
+            ctx.remove(product); // Chama o método para remover o produto
+            ctx.commit();        // Confirma a remoção no banco de dados
+            tableViewAllProducts.getItems().remove(product); // Atualiza a tabela
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (ctx != null) {
+                ctx.commit(); // Rollback em caso de erro
+            }
+        }
     }
+    
 }

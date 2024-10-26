@@ -109,5 +109,22 @@ public class Context {
         }
     }
 
+    public void remove(Object object) {
+        if (em == null) {
+            System.out.println("connection is null.");
+            return;
+        }
+        try {
+            em.remove(em.contains(object) ? object : em.merge(object)); 
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            em = null;
+        }
+    }
+    
+
 
 }

@@ -3,6 +3,7 @@ package com.desktopapp;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.DoubleFunction;
 
 import com.desktopapp.model.Product;
 import com.desktopapp.model.User;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -41,12 +43,18 @@ public class OperProductController implements Initializable {
 
     @FXML
     private TableColumn<Product, Double> priceColumnProducts; 
-
+    
     @FXML
     private TableColumn<Product, Void> editar; 
 
     @FXML
     private TableColumn<Product, Void> excluir; 
+
+    @FXML
+    private TextField nomeProduto;
+
+    @FXML
+    private TextField priceProduto;
 
     public static Scene CreateScene(User user) throws Exception {
         URL sceneUrl = OperProductController.class.getResource("adicionarEditarExcluirProdutos.fxml");
@@ -57,6 +65,22 @@ public class OperProductController implements Initializable {
         controller.setLoggedUser(user); 
     
         return new Scene(root);
+    }
+
+    @FXML
+    protected void createProduct()
+    {
+
+        Product prod1 = new Product();
+        prod1.setNameProd( nomeProduto.getText());
+        prod1.setPriceProd(Double.parseDouble(priceProduto.getText()));
+
+        Context ctx = new Context();
+
+        ctx.begin();
+        ctx.save(prod1);
+        ctx.commit();
+
     }
 
     @Override
@@ -82,7 +106,7 @@ public class OperProductController implements Initializable {
                     @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
-                        setGraphic(empty ? null : btn);
+                        //setGraphic(empty ? null : btn);
                     }
                 };
             }
@@ -107,6 +131,7 @@ public class OperProductController implements Initializable {
                         super.updateItem(item, empty);
                         setGraphic(empty ? null : btn);
                     }
+
                 };
             }
         });
@@ -157,15 +182,25 @@ public class OperProductController implements Initializable {
         }
     }
 
+  
     @FXML
-    protected void addProduct() {
-        // Implementar lógica de adição de produto
-    }
-
     private void editProduct(Product product) {
-        // Lógica para editar o produto
-        System.out.println("Editando produto: " + product.getNameProd());
-        // Aqui você pode abrir um novo formulário para edição
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("editarProduto.fxml"));
+            Parent editRoot = loader.load();
+
+            EditProductController editController = loader.getController();
+            editController.setProduct(product); // Passa o produto para o controlador
+
+            // Criar uma nova cena e exibir
+            Stage editStage = new Stage();
+            editStage.setScene(new Scene(editRoot));
+            editStage.setTitle("Editar Produto");
+            editStage.show(); // Exibe a nova janela
+            
+        } catch (Exception e) {
+            e.printStackTrace(); // Mensagem de erro
+        }
     }
 
     private void deleteProduct(Product product) {

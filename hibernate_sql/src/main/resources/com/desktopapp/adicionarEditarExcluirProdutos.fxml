@@ -10,25 +10,39 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.OperProductController">
    <children>
-    <TableView id="tableViewAllProducts" fx:id="tableViewAllProducts" layoutX="138.0" layoutY="256.0" prefHeight="200.0" prefWidth="375.0">
-      <columns>
-        <TableColumn id="idColumnProducts" fx:id="idColumnProducts" prefWidth="75.0" text="id" />
-        <TableColumn id="nameColumnProducts" fx:id="nameColumnProducts" prefWidth="75.0" text="name" />
-        <TableColumn id="priceColumnProducts" fx:id="priceColumnProducts" prefWidth="75.0" text="price" />
-            <TableColumn id="editar" fx:id="editar" prefWidth="75.0" text="Editar" />
-            <TableColumn id="excluir" fx:id="excluir" prefWidth="75.0" text="Excluir" />
-      </columns>
-    </TableView>
-      <TextField id="nomeProduto" fx:id="nomeProduto" layoutX="156.0" layoutY="127.0" />
+
+      <TableView fx:id="tableViewAllProducts" layoutX="138.0" layoutY="256.0" prefHeight="200.0" prefWidth="375.0">
+
+         <columns>
+            <TableColumn fx:id="idColumnProducts" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="nameColumnProducts" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="priceColumnProducts" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="editar" prefWidth="75.0" text="Editar" />
+            <TableColumn fx:id="excluir" prefWidth="75.0" text="Excluir" />
+         </columns>
+
+      </TableView>
+
+      <TextField fx:id="nomeProduto" layoutX="156.0" layoutY="127.0" />
+
       <Label layoutX="231.0" layoutY="46.0" text="Adicionar produto">
+
          <font>
             <Font size="22.0" />
-         </font></Label>
+         </font>
+
+      </Label>
+
       <Label layoutX="156.0" layoutY="103.0" text="Name" />
-      <TextField id="priceProduto" layoutX="345.0" layoutY="127.0" />
+
+      <TextField fx:id="priceProduto" layoutX="345.0" layoutY="127.0" />
+
       <Label layoutX="345.0" layoutY="103.0" text="Price" />
-      <Button id="btAdicionar" layoutX="286.0" layoutY="176.0" mnemonicParsing="false" text="Adicionar" />
+
+      <Button fx:id="btAdicionar" onAction="#createProduct" layoutX="286.0" layoutY="176.0" mnemonicParsing="false" text="Adicionar" />
+
       <Label layoutX="246.0" layoutY="220.0" text="PRODUTOS CADASTRADOS" />
-      <Button id="voltar" fx:id="voltar" layoutX="50.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBackHome" prefHeight="17.0" prefWidth="57.0" text="Voltar" />
+
+      <Button fx:id="voltar" layoutX="50.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBackHome" prefHeight="17.0" prefWidth="57.0" text="Voltar" />
    </children>
 </AnchorPane>

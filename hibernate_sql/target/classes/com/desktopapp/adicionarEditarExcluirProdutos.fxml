@@ -17,7 +17,7 @@
             <TableColumn fx:id="idColumnProducts" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="nameColumnProducts" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="priceColumnProducts" prefWidth="75.0" text="Price" />
-            <TableColumn fx:id="editar" prefWidth="75.0" text="Editar" />
+            <TableColumn fx:id="editar" prefWidth="75.0" text="Editar produto" />
             <TableColumn fx:id="excluir" prefWidth="75.0" text="Excluir" />
          </columns>
 

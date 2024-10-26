@@ -56,6 +56,7 @@ public class OperProductController implements Initializable {
     @FXML
     private TextField priceProduto;
 
+    
     public static Scene CreateScene(User user) throws Exception {
         URL sceneUrl = OperProductController.class.getResource("adicionarEditarExcluirProdutos.fxml");
         FXMLLoader loader = new FXMLLoader(sceneUrl);
@@ -70,7 +71,6 @@ public class OperProductController implements Initializable {
     @FXML
     protected void createProduct()
     {
-
         Product prod1 = new Product();
         prod1.setNameProd( nomeProduto.getText());
         prod1.setPriceProd(Double.parseDouble(priceProduto.getText()));
@@ -80,7 +80,6 @@ public class OperProductController implements Initializable {
         ctx.begin();
         ctx.save(prod1);
         ctx.commit();
-
     }
 
     @Override
@@ -91,26 +90,32 @@ public class OperProductController implements Initializable {
 
         // Configuração da coluna de editar
         editar.setCellFactory(new Callback<TableColumn<Product, Void>, TableCell<Product, Void>>() {
-            @Override
+            @FXML
             public TableCell<Product, Void> call(TableColumn<Product, Void> param) {
                 return new TableCell<Product, Void>() {
-                    private final Button btn = new Button("Editar");
-
+                    private final Button editButton = new Button("Editar");
+    
                     {
-                        btn.setOnAction(event -> {
-                            Product product = getTableView().getItems().get(getIndex());
-                            editProduct(product);
+                        // Configurar o evento de clique para abrir a nova tela de edição
+                        editButton.setOnAction(event -> {
+                            Product selectedProduct = getTableView().getItems().get(getIndex());
+                            openEditProductScreen(selectedProduct);
                         });
                     }
-
+    
                     @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
-                        //setGraphic(empty ? null : btn);
+                        setGraphic(empty ? null : editButton);
                     }
                 };
             }
         });
+    
+        // Adicionar a coluna editar à tabela, se ainda não estiver adicionada
+        if (!tableViewAllProducts.getColumns().contains(editar)) {
+            tableViewAllProducts.getColumns().add(editar);
+        }
 
         // Configuração da coluna de excluir
         excluir.setCellFactory(new Callback<TableColumn<Product, Void>, TableCell<Product, Void>>() {
@@ -182,24 +187,25 @@ public class OperProductController implements Initializable {
         }
     }
 
-  
-    @FXML
-    private void editProduct(Product product) {
+    // @FXML
+    private void openEditProductScreen(Product product) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("editarProduto.fxml"));
             Parent editRoot = loader.load();
-
+    
             EditProductController editController = loader.getController();
-            editController.setProduct(product); // Passa o produto para o controlador
-
-            // Criar uma nova cena e exibir
+            editController.setProduct(product);
+    
             Stage editStage = new Stage();
             editStage.setScene(new Scene(editRoot));
             editStage.setTitle("Editar Produto");
-            editStage.show(); // Exibe a nova janela
+            editStage.show();
             
+            // Atualizar a tabela após fechar a janela de edição
+            editStage.setOnHiding(event -> tableViewAllProducts.refresh());
+    
         } catch (Exception e) {
-            e.printStackTrace(); // Mensagem de erro
+            e.printStackTrace();
         }
     }
 

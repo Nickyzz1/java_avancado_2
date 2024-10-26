@@ -15,12 +15,12 @@
          </font>
       </Text>
       <Label layoutX="268.0" layoutY="118.0" text="Novo nome" textFill="WHITE" />
-      <TextField layoutX="169.0" layoutY="152.0" prefHeight="35.0" prefWidth="262.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="nameField" layoutX="169.0" layoutY="152.0" prefHeight="35.0" prefWidth="262.0" style="-fx-background-radius: 10;" />
       <Label layoutX="269.0" layoutY="200.0" text="Novo preço" textFill="WHITE" />
-      <TextField layoutX="226.0" layoutY="232.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="priceField" layoutX="226.0" layoutY="232.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-radius: 10;" />
 
-      <Button fx:id="editButton" text="Editar" layoutX="221.0" layoutY="299.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #46685b;" text="Editar" textFill="WHITE" />
-      <Button fx:id="cancelButton" text="Cancelar" layoutX="321.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: DC143C;" text="Cancelar" textFill="WHITE" />
+      <Button fx:id="editButton" layoutX="221.0" layoutY="299.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #46685b;" text="Editar" textFill="WHITE" />
+      <Button fx:id="cancelButton" layoutX="321.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: DC143C;" text="Cancelar" textFill="WHITE" />
 
    </children>
 </AnchorPane>

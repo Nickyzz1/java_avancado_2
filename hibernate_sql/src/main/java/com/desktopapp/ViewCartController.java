@@ -25,7 +25,7 @@ public class ViewCartController implements Initializable
     private User loggedUser;
 
     @FXML
-    protected Button voltarHome;
+    protected Button ;
 
     @FXML 
     private TableView<Cart> tableView; 
